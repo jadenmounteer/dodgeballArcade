@@ -1,4 +1,3 @@
-import { DOCUMENT } from '@angular/common';
 import {
   AfterViewInit,
   Component,
@@ -29,7 +28,7 @@ export class PlayerComponent implements AfterViewInit {
 
   @Input() canvasQuery: any;
 
-  @ViewChild('player1', { static: true }) player1: ElementRef | undefined;
+  @ViewChild('sprite', { static: true }) player1: ElementRef | undefined;
 
   // Animations
   playerIcon0: any;
