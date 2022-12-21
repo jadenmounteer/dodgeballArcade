@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-sprite',
-  templateUrl: './sprite.component.html',
-  styleUrls: ['./sprite.component.scss'],
+  template: '',
 })
 export class SpriteComponent {
   public BORDER_WIDTH: number = 1;
