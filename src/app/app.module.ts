@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SpriteComponent } from './components/sprite/sprite.component';
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SpriteComponent
+    SpriteComponent,
+    PlayerComponent
   ],
   imports: [
     BrowserModule,
