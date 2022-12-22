@@ -1,0 +1,35 @@
+@mixin center-div {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.player-container {
+  @include center-div();
+  width: fit-content;
+}
+
+.page-wrapper {
+  @include center-div();
+  height: 100vh;
+  width: 50%;
+  text-align: center;
+}
+
+.buttons-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+button {
+  background-color: #2f74e3;
+  color: white;
+  padding: 2em;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #81abee;
+  transition: 0.3s;
+}
