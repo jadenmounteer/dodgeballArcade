@@ -16,8 +16,11 @@ import { SpriteComponent } from '../sprite/sprite.component';
 export class PlayerComponent extends SpriteComponent implements AfterViewInit {
   public override SPRITE_WIDTH = 128; // The total width in px divided by the number of columns
   public override SPRITE_HEIGHT = 128; // The total height in px divided by the total rows
-  public override BORDER_WIDTH: number = 1;
-  public override SPACING_WIDTH: number = 1;
+
+  // Spritesheets from Piskel seem to not have a border or spacing
+  public override BORDER_WIDTH: number = 0;
+  public override SPACING_WIDTH: number = 0;
+
   public override canvas: any;
   public override context: any;
   spriteSheetURL = 'assets/sprites/player/Player.png';
