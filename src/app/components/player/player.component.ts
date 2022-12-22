@@ -41,6 +41,8 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     1,
     3
   );
+  private playerWave1: any = this.spritePositionToImagePosition(2, 1);
+  private playerWave2: any = this.spritePositionToImagePosition(2, 2);
 
   /*** ANIMATIONS ***/
 
@@ -62,8 +64,21 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     this.playerSecondFootRaised,
   ];
 
+  // Waving
+  private playerWaveCycle: any = [
+    this.playerStandingStill,
+    this.playerStandingStill,
+    this.playerStandingStill,
+    this.playerWave1,
+    this.playerWave2,
+    this.playerWave1,
+    this.playerWave1,
+    this.playerWave2,
+  ];
+
   // Speeds
   walkingSpeed = 500;
+  wavingSpeed = 200;
 
   ngAfterViewInit(): void {
     this.canvas = this.player1?.nativeElement;
@@ -73,7 +88,8 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     this.canvasQuery = this.canvasQuery;
     // this.standStill();
     // this.idle();
-    this.walk();
+    // this.walk();
+    this.wave();
   }
 
   public standStill() {
@@ -92,5 +108,11 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     setInterval(() => {
       this.animate(this.playerWalkCycle);
     }, this.walkingSpeed);
+  }
+
+  public wave() {
+    setInterval(() => {
+      this.animate(this.playerWaveCycle);
+    }, this.wavingSpeed);
   }
 }
