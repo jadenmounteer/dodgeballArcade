@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from 'src/app/services/player.service';
 
 @Component({
   selector: 'app-player-showcase',
@@ -6,17 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./player-showcase.component.scss'],
 })
 export class PlayerShowcaseComponent implements OnInit {
-  constructor() {}
+  constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {}
 
-  public standStill() {}
+  public standStill() {
+    this.playerService.changePlayerBehavior('standStill');
+  }
 
-  public idle() {}
+  public idle() {
+    this.playerService.changePlayerBehavior('idle');
+  }
 
-  public walk() {}
+  public walk() {
+    this.playerService.changePlayerBehavior('walk');
+  }
 
-  public wave() {}
+  public wave() {
+    this.playerService.changePlayerBehavior('wave');
+  }
 
-  public cheer() {}
+  public cheer() {
+    this.playerService.changePlayerBehavior('cheer');
+  }
 }

@@ -4,8 +4,10 @@ import {
   ElementRef,
   Inject,
   Input,
+  OnInit,
   ViewChild,
 } from '@angular/core';
+import { PlayerService } from 'src/app/services/player.service';
 import { SpriteComponent } from '../sprite/sprite.component';
 
 @Component({
@@ -13,7 +15,10 @@ import { SpriteComponent } from '../sprite/sprite.component';
   templateUrl: './player.component.html',
   styleUrls: ['./player.component.scss'],
 })
-export class PlayerComponent extends SpriteComponent implements AfterViewInit {
+export class PlayerComponent
+  extends SpriteComponent
+  implements AfterViewInit, OnInit
+{
   public override SPRITE_WIDTH = 128; // The total width in px divided by the number of columns
   public override SPRITE_HEIGHT = 128; // The total height in px divided by the total rows
 
@@ -31,6 +36,10 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
   @Input() canvasQuery: any;
 
   @ViewChild('sprite', { static: true }) player1: ElementRef | undefined;
+
+  constructor(private playerService: PlayerService) {
+    super();
+  }
 
   /*** Images ***/
   private playerStandingStill: any = this.spritePositionToImagePosition(0, 0);
@@ -97,6 +106,12 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
   walkingSpeed = 500;
   wavingSpeed = 200;
 
+  ngOnInit(): void {
+    this.playerService.behaviorEmitter.subscribe((newBehavior) => {
+      this.handleNewBehavior(newBehavior);
+    });
+  }
+
   ngAfterViewInit(): void {
     this.canvas = this.player1?.nativeElement;
     this.context = this.canvas.getContext('2d');
@@ -107,7 +122,31 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     // this.idle();
     // this.walk();
     // this.wave();
-    this.cheer();
+    // this.cheer();
+  }
+
+  private handleNewBehavior(newBehavior: string) {
+    switch (newBehavior) {
+      case 'standStill':
+        this.standStill();
+        break;
+
+      case 'idle':
+        this.idle();
+        break;
+
+      case 'walk':
+        this.walk();
+        break;
+
+      case 'wave':
+        this.wave();
+        break;
+
+      case 'cheer':
+        this.cheer();
+        break;
+    }
   }
 
   public standStill() {
