@@ -43,6 +43,8 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
   );
   private playerWave1: any = this.spritePositionToImagePosition(2, 1);
   private playerWave2: any = this.spritePositionToImagePosition(2, 2);
+  private armsRaised1: any = this.spritePositionToImagePosition(3, 1);
+  private armsRaised2: any = this.spritePositionToImagePosition(3, 2);
 
   /*** ANIMATIONS ***/
 
@@ -76,6 +78,21 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     this.playerWave2,
   ];
 
+  // Cheering
+  private playerCheeringCycle: any = [
+    this.playerStandingStill,
+    this.playerStandingStill,
+    this.playerStandingStill,
+    this.armsRaised1,
+    this.armsRaised2,
+    this.armsRaised1,
+    this.armsRaised2,
+    this.armsRaised1,
+    this.armsRaised2,
+    this.armsRaised1,
+    this.armsRaised2,
+  ];
+
   // Speeds
   walkingSpeed = 500;
   wavingSpeed = 200;
@@ -89,7 +106,8 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     // this.standStill();
     // this.idle();
     // this.walk();
-    this.wave();
+    // this.wave();
+    this.cheer();
   }
 
   public standStill() {
@@ -113,6 +131,12 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
   public wave() {
     setInterval(() => {
       this.animate(this.playerWaveCycle);
+    }, this.wavingSpeed);
+  }
+
+  public cheer() {
+    setInterval(() => {
+      this.animate(this.playerCheeringCycle);
     }, this.wavingSpeed);
   }
 }
