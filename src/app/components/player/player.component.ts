@@ -32,6 +32,7 @@ export class PlayerComponent
   public override frameIndex: number = 0;
   public override frame: any;
   public override image = new Image();
+  private currentInterval: NodeJS.Timer | undefined;
 
   @Input() canvasQuery: any;
 
@@ -107,7 +108,9 @@ export class PlayerComponent
   wavingSpeed = 200;
 
   ngOnInit(): void {
+    this.standStill();
     this.playerService.behaviorEmitter.subscribe((newBehavior) => {
+      this.stopCurrentAnimation();
       this.handleNewBehavior(newBehavior);
     });
   }
@@ -123,6 +126,10 @@ export class PlayerComponent
     // this.walk();
     // this.wave();
     // this.cheer();
+  }
+
+  private stopCurrentAnimation() {
+    clearInterval(this.currentInterval);
   }
 
   private handleNewBehavior(newBehavior: string) {
@@ -150,31 +157,31 @@ export class PlayerComponent
   }
 
   public standStill() {
-    setInterval(() => {
+    this.currentInterval = setInterval(() => {
       this.animate(this.standingStillCycle);
     }, this.walkingSpeed);
   }
 
   public idle() {
-    setInterval(() => {
+    this.currentInterval = setInterval(() => {
       this.animate(this.playerIdleCycle);
     }, this.walkingSpeed);
   }
 
   public walk() {
-    setInterval(() => {
+    this.currentInterval = setInterval(() => {
       this.animate(this.playerWalkCycle);
     }, this.walkingSpeed);
   }
 
   public wave() {
-    setInterval(() => {
+    this.currentInterval = setInterval(() => {
       this.animate(this.playerWaveCycle);
     }, this.wavingSpeed);
   }
 
   public cheer() {
-    setInterval(() => {
+    this.currentInterval = setInterval(() => {
       this.animate(this.playerCheeringCycle);
     }, this.wavingSpeed);
   }
