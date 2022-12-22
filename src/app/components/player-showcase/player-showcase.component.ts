@@ -3,13 +3,20 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-player-showcase',
   templateUrl: './player-showcase.component.html',
-  styleUrls: ['./player-showcase.component.scss']
+  styleUrls: ['./player-showcase.component.scss'],
 })
 export class PlayerShowcaseComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
+  public standStill() {}
 
+  public idle() {}
+
+  public walk() {}
+
+  public wave() {}
+
+  public cheer() {}
 }
