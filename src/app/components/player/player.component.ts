@@ -36,6 +36,11 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
   private playerStandingStill: any = this.spritePositionToImagePosition(0, 0);
   private playerStretching1: any = this.spritePositionToImagePosition(0, 1);
   private playerStretching2: any = this.spritePositionToImagePosition(0, 2);
+  private playerFirstFootRaised: any = this.spritePositionToImagePosition(1, 1);
+  private playerSecondFootRaised: any = this.spritePositionToImagePosition(
+    1,
+    3
+  );
 
   /*** ANIMATIONS ***/
 
@@ -49,6 +54,14 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     this.playerStretching2,
   ];
 
+  // Walking
+  private playerWalkCycle: any = [
+    this.playerStandingStill,
+    this.playerFirstFootRaised,
+    this.playerStandingStill,
+    this.playerSecondFootRaised,
+  ];
+
   // Speeds
   walkingSpeed = 500;
 
@@ -59,7 +72,8 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
     this.image.crossOrigin = 'true';
     this.canvasQuery = this.canvasQuery;
     // this.standStill();
-    this.idle();
+    // this.idle();
+    this.walk();
   }
 
   public standStill() {
@@ -71,6 +85,12 @@ export class PlayerComponent extends SpriteComponent implements AfterViewInit {
   public idle() {
     setInterval(() => {
       this.animate(this.playerIdleCycle);
+    }, this.walkingSpeed);
+  }
+
+  public walk() {
+    setInterval(() => {
+      this.animate(this.playerWalkCycle);
     }, this.walkingSpeed);
   }
 }
