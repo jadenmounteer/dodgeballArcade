@@ -14,13 +14,13 @@ export class AppComponent implements OnInit {
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowUp') {
-      this.playerService.changePlayerBehavior('walk');
+      this.playerService.walk();
     } else if (event.key === 'ArrowDown') {
-      this.playerService.changePlayerBehavior('walk');
+      this.playerService.walk();
     } else if (event.key === 'ArrowLeft') {
-      this.playerService.changePlayerBehavior('walk');
+      this.playerService.walk();
     } else if (event.key === 'ArrowRight') {
-      this.playerService.changePlayerBehavior('walk');
+      this.playerService.walk();
     }
   }
 
@@ -28,13 +28,13 @@ export class AppComponent implements OnInit {
   @HostListener('window:keyup', ['$event'])
   keyUpEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowUp') {
-      this.playerService.changePlayerBehavior('standStill');
+      this.playerService.standStill();
     } else if (event.key === 'ArrowDown') {
-      this.playerService.changePlayerBehavior('standStill');
+      this.playerService.standStill();
     } else if (event.key === 'ArrowLeft') {
-      this.playerService.changePlayerBehavior('standStill');
+      this.playerService.standStill();
     } else if (event.key === 'ArrowRight') {
-      this.playerService.changePlayerBehavior('standStill');
+      this.playerService.standStill();
     }
   }
 

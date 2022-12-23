@@ -10,4 +10,24 @@ export class PlayerService {
   public changePlayerBehavior(newBehavior: string) {
     this.behaviorEmitter.next(newBehavior);
   }
+
+  public walk() {
+    this.behaviorEmitter.next('walk');
+  }
+
+  public standStill() {
+    this.behaviorEmitter.next('standStill');
+  }
+
+  public idle() {
+    this.behaviorEmitter.next('idle');
+  }
+
+  public wave() {
+    this.behaviorEmitter.next('wave');
+  }
+
+  public cheer() {
+    this.behaviorEmitter.next('cheer');
+  }
 }

@@ -12,22 +12,22 @@ export class PlayerShowcaseComponent implements OnInit {
   ngOnInit(): void {}
 
   public standStill() {
-    this.playerService.changePlayerBehavior('standStill');
+    this.playerService.standStill();
   }
 
   public idle() {
-    this.playerService.changePlayerBehavior('idle');
+    this.playerService.idle();
   }
 
   public walk() {
-    this.playerService.changePlayerBehavior('walk');
+    this.playerService.walk();
   }
 
   public wave() {
-    this.playerService.changePlayerBehavior('wave');
+    this.playerService.wave();
   }
 
   public cheer() {
-    this.playerService.changePlayerBehavior('cheer');
+    this.playerService.cheer();
   }
 }
