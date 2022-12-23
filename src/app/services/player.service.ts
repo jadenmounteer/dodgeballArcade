@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { HostListener, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
