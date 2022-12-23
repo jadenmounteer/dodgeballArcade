@@ -175,6 +175,7 @@ export class PlayerComponent
   }
 
   public walk() {
+    console.log(this.getXCoordinate());
     this.currentInterval = setInterval(() => {
       this.animate(this.playerWalkCycle);
     }, this.walkingSpeed);
@@ -190,5 +191,9 @@ export class PlayerComponent
     this.currentInterval = setInterval(() => {
       this.animate(this.playerCheeringCycle);
     }, this.wavingSpeed);
+  }
+
+  getXCoordinate() {
+    return this.canvas.getBoundingClientRect().x;
   }
 }
