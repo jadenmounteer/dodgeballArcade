@@ -42,4 +42,12 @@ export class SpriteComponent {
     );
     this.frameIndex += 1;
   }
+
+  public getXCoordinate() {
+    return this.canvas.getBoundingClientRect().x;
+  }
+
+  public getYCoordinate() {
+    return this.canvas.getYCoordinate().y;
+  }
 }
