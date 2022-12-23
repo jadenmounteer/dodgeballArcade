@@ -33,6 +33,7 @@ export class PlayerComponent
   public override frame: any;
   public override image = new Image();
   private currentInterval: NodeJS.Timer | undefined;
+  private currentAnimation: string = 'standStill';
 
   @Input() canvasQuery: any;
 
@@ -116,7 +117,6 @@ export class PlayerComponent
   ngOnInit(): void {
     this.standStill();
     this.playerService.behaviorEmitter.subscribe((newBehavior) => {
-      this.stopCurrentAnimation();
       this.handleNewBehavior(newBehavior);
     });
   }
@@ -134,26 +134,33 @@ export class PlayerComponent
   }
 
   private handleNewBehavior(newBehavior: string) {
-    switch (newBehavior) {
-      case 'standStill':
-        this.standStill();
-        break;
+    console.log(`The player is currently ${this.currentAnimation}`);
+    if (newBehavior != this.currentAnimation) {
+      this.stopCurrentAnimation();
 
-      case 'idle':
-        this.idle();
-        break;
+      console.log(`Setting player to ${newBehavior}`);
+      this.currentAnimation = newBehavior;
+      switch (newBehavior) {
+        case 'standStill':
+          this.standStill();
+          break;
 
-      case 'walk':
-        this.walk();
-        break;
+        case 'idle':
+          this.idle();
+          break;
 
-      case 'wave':
-        this.wave();
-        break;
+        case 'walk':
+          this.walk();
+          break;
 
-      case 'cheer':
-        this.cheer();
-        break;
+        case 'wave':
+          this.wave();
+          break;
+
+        case 'cheer':
+          this.cheer();
+          break;
+      }
     }
   }
 
