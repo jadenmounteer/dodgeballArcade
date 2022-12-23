@@ -59,7 +59,12 @@ export class PlayerComponent
   /*** ANIMATIONS ***/
 
   // Standing still
-  private standingStillCycle: any = [this.playerStandingStill];
+  private standingStillCycle: any = [
+    this.playerStandingStill,
+    this.playerStandingStill,
+    this.playerStandingStill,
+    this.playerStandingStill,
+  ];
 
   // Idle
   private playerIdleCycle: any = [
@@ -104,7 +109,8 @@ export class PlayerComponent
   ];
 
   // Speeds
-  walkingSpeed = 500;
+  walkingSpeed = 200;
+  generalSpeed = 500;
   wavingSpeed = 200;
 
   ngOnInit(): void {
@@ -121,11 +127,6 @@ export class PlayerComponent
     this.image.src = this.spriteSheetURL;
     this.image.crossOrigin = 'true';
     this.canvasQuery = this.canvasQuery;
-    // this.standStill();
-    // this.idle();
-    // this.walk();
-    // this.wave();
-    // this.cheer();
   }
 
   private stopCurrentAnimation() {
@@ -159,13 +160,13 @@ export class PlayerComponent
   public standStill() {
     this.currentInterval = setInterval(() => {
       this.animate(this.standingStillCycle);
-    }, this.walkingSpeed);
+    }, this.generalSpeed);
   }
 
   public idle() {
     this.currentInterval = setInterval(() => {
       this.animate(this.playerIdleCycle);
-    }, this.walkingSpeed);
+    }, this.generalSpeed);
   }
 
   public walk() {
