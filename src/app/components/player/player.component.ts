@@ -134,11 +134,9 @@ export class PlayerComponent
   }
 
   private handleNewBehavior(newBehavior: string) {
-    console.log(`The player is currently ${this.currentAnimation}`);
     if (newBehavior != this.currentAnimation) {
       this.stopCurrentAnimation();
 
-      console.log(`Setting player to ${newBehavior}`);
       this.currentAnimation = newBehavior;
       switch (newBehavior) {
         case 'standStill':
