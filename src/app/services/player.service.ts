@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class PlayerService {
   public behaviorEmitter = new Subject<string>();
 
+  // TODO Refactor this to be a new Subject per animation. Then we can get rid of our switch statements and it's ETC.
   public changePlayerBehavior(newBehavior: string) {
     this.behaviorEmitter.next(newBehavior);
   }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayerService } from 'src/app/services/player.service';
 
 @Component({
   selector: 'app-game',
@@ -6,10 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-  public playerTopPos: string = '200px';
-  public playerLeftPos: string = '500px';
+  private playerTopPos: number = 0;
+  private playerLeftPos: number = 0;
+  public playerTopPosString: string = '0px';
+  public playerLeftPosString: string = '0px';
 
-  constructor() {}
+  constructor(private playerService: PlayerService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.playerService.behaviorEmitter.subscribe((newBehavior) => {
+      this.handlePlayerMovement(newBehavior);
+    });
+  }
+
+  private handlePlayerMovement(newBehavior: string) {
+    switch (newBehavior) {
+      case 'walk':
+        this.playerTopPos += 1;
+
+        this.playerTopPosString = `${this.playerTopPos}px`;
+        console.log(this.playerTopPosString);
+        break;
+    }
+  }
 }
