@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   // When the user releases a key...
   @HostListener('window:keyup', ['$event'])
   keyUpEvent(event: KeyboardEvent) {
-    this.playerService.listenForDownKeyEvent(event);
+    this.playerService.listenForKeyUpEvent(event);
   }
 
   title = 'dodgeball-arcade';
