@@ -55,4 +55,24 @@ export class GameComponent implements OnInit {
     this.playerLeftPos += 1;
     this.playerLeftPosString = this.convertPosToString(this.playerLeftPos);
   }
+
+  private walkTopRight() {
+    this.walkRight;
+    this.walkUp;
+  }
+
+  private walkTopLeft() {
+    this.walkLeft;
+    this.walkUp;
+  }
+
+  private walkBottomLeft() {
+    this.walkLeft;
+    this.walkDown;
+  }
+
+  private walkBottomRight() {
+    this.walkRight;
+    this.walkDown;
+  }
 }
