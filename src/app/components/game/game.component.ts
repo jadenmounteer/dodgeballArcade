@@ -18,6 +18,18 @@ export class GameComponent implements OnInit {
     this.playerService.walkDownEmitter.subscribe((newBehavior) => {
       this.walkDown();
     });
+
+    this.playerService.walkUpEmitter.subscribe((newBehavior) => {
+      this.walkUp();
+    });
+
+    this.playerService.walkLeftEmitter.subscribe((newBehavior) => {
+      this.walkLeft();
+    });
+
+    this.playerService.walkRightEmitter.subscribe((newBehavior) => {
+      this.walkRight();
+    });
   }
 
   private convertPosToString(newPosition: number): string {
@@ -27,5 +39,20 @@ export class GameComponent implements OnInit {
   private walkDown() {
     this.playerTopPos += 1;
     this.playerTopPosString = this.convertPosToString(this.playerTopPos);
+  }
+
+  private walkUp() {
+    this.playerTopPos -= 1;
+    this.playerTopPosString = this.convertPosToString(this.playerTopPos);
+  }
+
+  private walkLeft() {
+    this.playerLeftPos -= 1;
+    this.playerLeftPosString = this.convertPosToString(this.playerLeftPos);
+  }
+
+  private walkRight() {
+    this.playerLeftPos += 1;
+    this.playerLeftPosString = this.convertPosToString(this.playerLeftPos);
   }
 }
