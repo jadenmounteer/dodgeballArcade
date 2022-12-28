@@ -15,7 +15,7 @@ export class GameComponent implements OnInit {
   constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
-    this.playerService.behaviorEmitter.subscribe((newBehavior) => {
+    this.playerService.walkEmitter.subscribe((newBehavior) => {
       this.handlePlayerMovement(newBehavior);
     });
   }

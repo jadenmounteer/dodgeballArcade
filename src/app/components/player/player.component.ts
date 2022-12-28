@@ -116,8 +116,31 @@ export class PlayerComponent
 
   ngOnInit(): void {
     this.standStill();
-    this.playerService.behaviorEmitter.subscribe((newBehavior) => {
-      this.handleNewBehavior(newBehavior);
+
+    this.playerService.walkEmitter.subscribe((newBehavior) => {
+      if (this.handleNewBehavior(newBehavior)) {
+        this.walk();
+      }
+    });
+    this.playerService.standStillEmitter.subscribe((newBehavior) => {
+      if (this.handleNewBehavior(newBehavior)) {
+        this.standStill();
+      }
+    });
+    this.playerService.idleEmitter.subscribe((newBehavior) => {
+      if (this.handleNewBehavior(newBehavior)) {
+        this.idle();
+      }
+    });
+    this.playerService.waveEmitter.subscribe((newBehavior) => {
+      if (this.handleNewBehavior(newBehavior)) {
+        this.wave();
+      }
+    });
+    this.playerService.cheerEmitter.subscribe((newBehavior) => {
+      if (this.handleNewBehavior(newBehavior)) {
+        this.cheer();
+      }
     });
   }
 
@@ -133,33 +156,14 @@ export class PlayerComponent
     clearInterval(this.currentInterval);
   }
 
-  private handleNewBehavior(newBehavior: string) {
+  private handleNewBehavior(newBehavior: string): boolean {
     if (newBehavior != this.currentAnimation) {
       this.stopCurrentAnimation();
 
       this.currentAnimation = newBehavior;
-      switch (newBehavior) {
-        case 'standStill':
-          this.standStill();
-          break;
-
-        case 'idle':
-          this.idle();
-          break;
-
-        case 'walk':
-          this.walk();
-          break;
-
-        case 'wave':
-          this.wave();
-          break;
-
-        case 'cheer':
-          this.cheer();
-          break;
-      }
+      return true;
     }
+    return false;
   }
 
   public standStill() {
