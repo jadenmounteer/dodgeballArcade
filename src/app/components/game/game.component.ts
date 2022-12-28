@@ -16,18 +16,16 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.playerService.walkDownEmitter.subscribe((newBehavior) => {
-      this.walkDown(newBehavior);
+      this.walkDown();
     });
   }
 
-  private walkDown(newBehavior: string) {
-    switch (newBehavior) {
-      case 'walk':
-        this.playerTopPos += 1;
+  private convertPosToString(newPosition: number): string {
+    return `${newPosition}px`;
+  }
 
-        this.playerTopPosString = `${this.playerTopPos}px`;
-        console.log(this.playerTopPosString);
-        break;
-    }
+  private walkDown() {
+    this.playerTopPos += 1;
+    this.playerTopPosString = this.convertPosToString(this.playerTopPos);
   }
 }
