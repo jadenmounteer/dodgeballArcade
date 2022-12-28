@@ -175,8 +175,6 @@ export class PlayerComponent
   }
 
   public walk() {
-    console.log(this.getXCoordinate());
-    console.log(this.canvas);
     this.currentInterval = setInterval(() => {
       this.animate(this.playerWalkCycle);
     }, this.walkingSpeed);
