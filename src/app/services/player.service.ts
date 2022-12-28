@@ -39,17 +39,14 @@ export class PlayerService {
   public listenForKeyUpEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowUp') {
       this.upKeyDown = false;
-      this.standStill();
     } else if (event.key === 'ArrowDown') {
       this.downKeyDown = false;
-      this.standStill();
     } else if (event.key === 'ArrowLeft') {
       this.leftKeyDown = false;
-      this.standStill();
     } else if (event.key === 'ArrowRight') {
       this.rightKeyDown = false;
-      this.standStill();
     }
+    this.handleAnimation();
   }
 
   private handleAnimation() {
@@ -60,69 +57,62 @@ export class PlayerService {
       !this.rightKeyDown
     ) {
       this.walkUp();
-    }
-
-    if (
+    } else if (
       this.downKeyDown &&
       !this.upKeyDown &&
       !this.leftKeyDown &&
       !this.rightKeyDown
     ) {
       this.walkDown();
-    }
-
-    if (
+    } else if (
       this.leftKeyDown &&
       !this.upKeyDown &&
       !this.downKeyDown &&
       !this.rightKeyDown
     ) {
       this.walkLeft();
-    }
-
-    if (
+    } else if (
       this.rightKeyDown &&
       !this.upKeyDown &&
       !this.downKeyDown &&
       !this.leftKeyDown
     ) {
       this.walkRight();
-    }
-
-    if (
+    } else if (
       this.rightKeyDown &&
       this.upKeyDown &&
       !this.downKeyDown &&
       !this.leftKeyDown
     ) {
       this.walkTopRight();
-    }
-
-    if (
+    } else if (
       this.leftKeyDown &&
       this.upKeyDown &&
       !this.downKeyDown &&
       !this.rightKeyDown
     ) {
       this.walkTopLeft();
-    }
-
-    if (
+    } else if (
       this.leftKeyDown &&
       this.downKeyDown &&
       !this.upKeyDown &&
       !this.rightKeyDown
     ) {
       this.walkBottomLeft();
-    }
-
-    if (
+    } else if (
       this.rightKeyDown &&
       this.downKeyDown &&
       !this.upKeyDown &&
       !this.leftKeyDown
     ) {
       this.walkBottomRight();
+    } else if (
+      !this.rightKeyDown &&
+      !this.downKeyDown &&
+      !this.upKeyDown &&
+      !this.leftKeyDown
+    ) {
+      this.standStill();
     }
   }
 
