@@ -1,3 +1,23 @@
 #player1 {
   position: absolute;
+
+  /**
+  TODO An animation like this might do the trick for the movement
+
+  animation: linear infinite alternate;
+  animation-name: run;
+  animation-duration: 10s;
+
+  **/
+}
+
+@keyframes run {
+  0% {
+    left: 0;
+    transform: translateX(0);
+  }
+  100% {
+    left: 100%;
+    transform: translateX(-100%);
+  }
 }

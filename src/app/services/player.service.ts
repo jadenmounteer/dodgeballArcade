@@ -14,6 +14,30 @@ export class PlayerService {
   public walkRightEmitter = new Subject<string>();
   public walkDownEmitter = new Subject<string>();
 
+  public listenForDownKeyEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowUp') {
+      this.walkUp();
+    } else if (event.key === 'ArrowDown') {
+      this.walkDown();
+    } else if (event.key === 'ArrowLeft') {
+      this.walkLeft();
+    } else if (event.key === 'ArrowRight') {
+      this.walkRight();
+    }
+  }
+
+  public listenForKeyUpEvent(event: KeyboardEvent) {
+    if (event.key === 'ArrowUp') {
+      this.standStill();
+    } else if (event.key === 'ArrowDown') {
+      this.standStill();
+    } else if (event.key === 'ArrowLeft') {
+      this.standStill();
+    } else if (event.key === 'ArrowRight') {
+      this.standStill();
+    }
+  }
+
   public walkUp() {
     this.walkUpEmitter.next('walk');
   }

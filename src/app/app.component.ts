@@ -13,29 +13,13 @@ export class AppComponent implements OnInit {
   // When the user presses a key down...
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp') {
-      this.playerService.walkUp();
-    } else if (event.key === 'ArrowDown') {
-      this.playerService.walkDown();
-    } else if (event.key === 'ArrowLeft') {
-      this.playerService.walkLeft();
-    } else if (event.key === 'ArrowRight') {
-      this.playerService.walkRight();
-    }
+    this.playerService.listenForDownKeyEvent(event);
   }
 
   // When the user releases a key...
   @HostListener('window:keyup', ['$event'])
   keyUpEvent(event: KeyboardEvent) {
-    if (event.key === 'ArrowUp') {
-      this.playerService.standStill();
-    } else if (event.key === 'ArrowDown') {
-      this.playerService.standStill();
-    } else if (event.key === 'ArrowLeft') {
-      this.playerService.standStill();
-    } else if (event.key === 'ArrowRight') {
-      this.playerService.standStill();
-    }
+    this.playerService.listenForDownKeyEvent(event);
   }
 
   title = 'dodgeball-arcade';
