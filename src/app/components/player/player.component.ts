@@ -117,7 +117,25 @@ export class PlayerComponent
   ngOnInit(): void {
     this.standStill();
 
-    this.playerService.walkEmitter.subscribe((newBehavior) => {
+    this.playerService.walkUpEmitter.subscribe((newBehavior) => {
+      if (this.handleNewBehavior(newBehavior)) {
+        this.walk();
+      }
+    });
+
+    this.playerService.walkLeftEmitter.subscribe((newBehavior) => {
+      if (this.handleNewBehavior(newBehavior)) {
+        this.walk();
+      }
+    });
+
+    this.playerService.walkRightEmitter.subscribe((newBehavior) => {
+      if (this.handleNewBehavior(newBehavior)) {
+        this.walk();
+      }
+    });
+
+    this.playerService.walkDownEmitter.subscribe((newBehavior) => {
       if (this.handleNewBehavior(newBehavior)) {
         this.walk();
       }

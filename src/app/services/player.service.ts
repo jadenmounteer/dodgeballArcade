@@ -9,10 +9,25 @@ export class PlayerService {
   public idleEmitter = new Subject<string>();
   public waveEmitter = new Subject<string>();
   public cheerEmitter = new Subject<string>();
-  public walkEmitter = new Subject<string>();
+  public walkUpEmitter = new Subject<string>();
+  public walkLeftEmitter = new Subject<string>();
+  public walkRightEmitter = new Subject<string>();
+  public walkDownEmitter = new Subject<string>();
 
-  public walk() {
-    this.walkEmitter.next('walk');
+  public walkUp() {
+    this.walkUpEmitter.next('walk');
+  }
+
+  public walkLeft() {
+    this.walkLeftEmitter.next('walk');
+  }
+
+  public walkRight() {
+    this.walkRightEmitter.next('walk');
+  }
+
+  public walkDown() {
+    this.walkDownEmitter.next('walk');
   }
 
   public standStill() {

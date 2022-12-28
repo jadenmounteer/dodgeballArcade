@@ -15,12 +15,12 @@ export class GameComponent implements OnInit {
   constructor(private playerService: PlayerService) {}
 
   ngOnInit(): void {
-    this.playerService.walkEmitter.subscribe((newBehavior) => {
-      this.handlePlayerMovement(newBehavior);
+    this.playerService.walkDownEmitter.subscribe((newBehavior) => {
+      this.walkDown(newBehavior);
     });
   }
 
-  private handlePlayerMovement(newBehavior: string) {
+  private walkDown(newBehavior: string) {
     switch (newBehavior) {
       case 'walk':
         this.playerTopPos += 1;

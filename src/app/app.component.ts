@@ -14,13 +14,13 @@ export class AppComponent implements OnInit {
   @HostListener('window:keydown', ['$event'])
   keyEvent(event: KeyboardEvent) {
     if (event.key === 'ArrowUp') {
-      this.playerService.walk();
+      this.playerService.walkUp();
     } else if (event.key === 'ArrowDown') {
-      this.playerService.walk();
+      this.playerService.walkDown();
     } else if (event.key === 'ArrowLeft') {
-      this.playerService.walk();
+      this.playerService.walkLeft();
     } else if (event.key === 'ArrowRight') {
-      this.playerService.walk();
+      this.playerService.walkRight();
     }
   }
 

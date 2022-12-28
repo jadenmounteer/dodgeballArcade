@@ -20,7 +20,7 @@ export class PlayerShowcaseComponent implements OnInit {
   }
 
   public walk() {
-    this.playerService.walk();
+    this.playerService.walkUp();
   }
 
   public wave() {
