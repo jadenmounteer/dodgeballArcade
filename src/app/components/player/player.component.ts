@@ -125,7 +125,8 @@ export class PlayerComponent
 
     this.playerService.walkLeftEmitter.subscribe((newBehavior) => {
       if (this.handleNewBehavior(newBehavior)) {
-        this.walk();
+        // this.walk();
+        this.wave();
       }
     });
 
